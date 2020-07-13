@@ -1,0 +1,33 @@
+{
+    "name": "hgh/fox",
+    "description": "The mini framwork",
+    "type": "project",
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../my-packages/exception-handler"
+        },
+        {
+            "type": "path",
+            "url": "../my-packages/helpers"
+        }
+    ],
+    "require": {
+        "hgh/helpers": "dev-master",
+        "hgh/exception-handler": "dev-master",
+        "vlucas/phpdotenv": "^4.1"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Hamed Ghasempour",
+            "email": "hamedghasempour@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload":{
+        "psr-4": {
+            "Fox\\": "src/"
+        }
+    }
+}
