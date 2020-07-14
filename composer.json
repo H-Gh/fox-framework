@@ -2,19 +2,9 @@
     "name": "hgh/fox",
     "description": "The mini framwork",
     "type": "project",
-    "repositories": [
-        {
-            "type": "path",
-            "url": "../my-packages/exception-handler"
-        },
-        {
-            "type": "path",
-            "url": "../my-packages/helpers"
-        }
-    ],
     "require": {
-        "hgh/helpers": "dev-master",
-        "hgh/exception-handler": "dev-master",
+        "hgh/helpers": "^1.0",
+        "hgh/exception-handler": "^1.0",
         "vlucas/phpdotenv": "^4.1"
     },
     "license": "MIT",
