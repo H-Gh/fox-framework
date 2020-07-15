@@ -36,7 +36,6 @@ class ExceptionRenderer
 
     /**
      * @return $this
-     * @throws Throwable
      */
     public function render()
     {
@@ -53,11 +52,11 @@ class ExceptionRenderer
     /**
      * Render the throwable for CLI
      *
-     * @throws Throwable
+     * @return void
      */
     private function renderForCli(): void
     {
-        throw $this->throwable;
+        echo $this->throwable->getFile() . ":" . $this->throwable->getLine() . PHP_EOL . $this->throwable->getMessage();
     }
 
     /**
