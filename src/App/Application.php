@@ -103,7 +103,6 @@ class Application
      * @param array $argv The arguments
      *
      * @return void
-     * @throws Throwable
      */
     public function run(?array $argv = null)
     {
@@ -174,7 +173,6 @@ class Application
      * @param Throwable $throwable The throwable
      *
      * @return void
-     * @throws Throwable
      */
     private function handleExceptions(Throwable $throwable)
     {
