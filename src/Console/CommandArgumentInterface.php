@@ -2,8 +2,6 @@
 
 namespace Fox\Console;
 
-use Fox\Exception\RequiredArgumentException;
-
 /**
  * The interface for the command argument
  * PHP version >= 7.0
