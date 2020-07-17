@@ -33,20 +33,27 @@ class Collection implements Iterator, CollectionInterface
      */
     public function add($data, $index = null): CollectionInterface
     {
-        $this->collection[] = $data;
+        if (!empty($index)) {
+            $this->collection[$index] = $data;
+        } else {
+            $this->collection[] = $data;
+        }
         return $this;
     }
 
     /**
      * Get the data from array
      *
-     * @param int $index The index of array
+     * @param mixed $index The index of array
      *
      * @return mixed
      */
-    public function get(int $index)
+    public function get($index)
     {
-        return $this->collection[$index];
+        if (isset($this->collection[$index])) {
+            return $this->collection[$index];
+        }
+        return null;
     }
 
     /**
