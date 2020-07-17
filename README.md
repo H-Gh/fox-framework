@@ -11,6 +11,7 @@ This is a mini framework to run some basic web apps.
  - [Folder structure of the App](#folder-structure-of-the-app)
  - [Controllers](#controllers)
  - [Models](#models)
+ - [Console](#console)
  - [Environment variables](#environment-variables)
 
 # Installation
@@ -98,10 +99,16 @@ The folder structure of the app is:
     ----- logs
 ```
 # Controllers
-All the controllers must be extended from `Fox/Controller/Controller`.
+- All the controllers must be extended from `Fox/Controller/Controller`.
 
 # Models
-All the models must be extended from `Fox/Database/Model`.
+- All the models must be extended from `Fox/Database/Model`.
+
+# Console
+- All the consoles must be extended from `Fox/Console/Console`.
+- All the commands must have the `SIGNATURE` const to use in the console. like `sample:action`
+- `SINGATURE` may have the arguments. Arguments must be surrounded by the `{}`. `sample:action {sampleArgument}`
+- Optional arguments must have `?` the argument name. like `sample:action {?sampleArgument}` 
 
 # Environment variables  
 |Variable|Description|Default value|
