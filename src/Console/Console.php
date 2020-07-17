@@ -2,7 +2,7 @@
 
 namespace Fox\Console;
 
-use Fox\Collection\Collection;
+use Fox\Collection\CollectionInterface;
 
 /**
  * The abstract class of console
@@ -18,16 +18,16 @@ abstract class Console
     /**
      * The arguments collection
      *
-     * @var Collection|CommandArgumentInterface[]
+     * @var CollectionInterface|CommandArgumentInterface[]
      */
     private $arguments;
 
     /**
      * Console constructor.
      *
-     * @param Collection|CommandArgumentInterface[] $arguments The arguments collection
+     * @param CollectionInterface|CommandArgumentInterface[] $arguments The arguments collection
      */
-    public function __construct(Collection $arguments)
+    public function __construct(CollectionInterface $arguments)
     {
         $this->arguments = $arguments;
     }
@@ -43,4 +43,11 @@ abstract class Console
         $argument = $this->arguments->get($argumentName);
         return $argument->getValue();
     }
+
+    /**
+     * Run the command
+     *
+     * @return void
+     */
+    abstract public function run();
 }
