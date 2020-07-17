@@ -1,7 +1,7 @@
 {
     "name": "hgh/fox",
     "description": "The mini framework",
-    "type": "project",
+    "type": "library",
     "require": {
         "hgh/helpers": "^1.0",
         "hgh/exception-handler": "^1.0",
