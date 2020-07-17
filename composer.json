@@ -1,6 +1,6 @@
 {
     "name": "hgh/fox",
-    "description": "The mini framwork",
+    "description": "The mini framework",
     "type": "project",
     "require": {
         "hgh/helpers": "^1.0",

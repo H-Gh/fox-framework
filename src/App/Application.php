@@ -3,7 +3,7 @@
 namespace Fox\App;
 
 use Dotenv\Dotenv;
-use Fox\Console\CommandManager;
+use Fox\Console\CommandListerSingleton;
 use Fox\Database\ConnectionSingleton;
 use Fox\Database\ConnectorFactory;
 use Fox\Exception\NotFoundException;
@@ -103,7 +103,6 @@ class Application
      * @param array $argv The arguments
      *
      * @return void
-     * @throws Throwable
      */
     public function run(?array $argv = null)
     {
@@ -121,7 +120,12 @@ class Application
     }
 
     /**
+     * Run the application on CLI
+     *
      * @param array|null $argv
+     *
+     * @return void
+     * @throws NotFoundException
      */
     private function runCli(?array $argv = null)
     {
@@ -134,12 +138,14 @@ class Application
 
     /**
      * List all commands
+     *
+     * @return void
      */
     private function listCommands()
     {
-        $commandManager = new CommandManager();
-        foreach ($commandManager->commands() as $command) {
-            echo $command->getSignature() . PHP_EOL;
+        $commandLister = CommandListerSingleton::get();
+        foreach ($commandLister->getCommands() as $command) {
+            echo $command->getAction() . PHP_EOL;
         }
     }
 
@@ -147,16 +153,46 @@ class Application
      * Run a specific command
      *
      * @param array $argv The arguments
+     *
+     * @return void
+     * @throws NotFoundException
      */
     private function runCommand(array $argv)
     {
-        $signature = $argv[1];
-        $arguments = array_slice($argv, 2);
-        $commandManager = new CommandManager();
-        $commandManager->run($signature, $arguments);
+        $action = $this->getAction($argv);
+        $argumentsValues = $this->getArgumentsValues($argv);
+        $command = CommandListerSingleton::get()->findOrFail($action);
+        $command->run($argumentsValues);
     }
 
     /**
+     * Get the signature
+     *
+     * @param array $argv The incoming values
+     *
+     * @return string
+     */
+    private function getAction(array $argv)
+    {
+        return $argv[1];
+    }
+
+    /**
+     * Get the arguments's values
+     *
+     * @param array $argv The incoming values
+     *
+     * @return array
+     */
+    private function getArgumentsValues(array $argv)
+    {
+        return array_slice($argv, 2);
+    }
+
+    /**
+     * Run the application on web
+     *
+     * @return void
      * @throws NotFoundException
      */
     private function runWeb()
@@ -174,7 +210,6 @@ class Application
      * @param Throwable $throwable The throwable
      *
      * @return void
-     * @throws Throwable
      */
     private function handleExceptions(Throwable $throwable)
     {
@@ -183,6 +218,8 @@ class Application
     }
 
     /**
+     * Get the environment
+     *
      * @return int
      */
     public function getRunEnv()
@@ -192,5 +229,4 @@ class Application
         }
         return self::RUN_ENV_WEB;
     }
-
 }
