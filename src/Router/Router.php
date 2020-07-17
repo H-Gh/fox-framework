@@ -3,6 +3,7 @@
 namespace Fox\Router;
 
 use Fox\Exception\NotFoundException;
+use Fox\Helpers\Url;
 
 /**
  * The main router class to manage the urls and route them to correct controller automatically
@@ -45,7 +46,7 @@ class Router
     private function setSections()
     {
         $sections = explode("/", $this->url);
-        $key = array_search(getenv("BLOG_NAME"), $sections);
+        $key = array_search(basename(realpath(Url::basePath())), $sections);
         unset($sections[$key]);
         $this->sections = array_values(array_filter($sections));
     }
