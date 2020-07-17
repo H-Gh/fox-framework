@@ -14,12 +14,12 @@ use Fox\Helpers\Url;
  * @license  MIT https://opensource.org/licenses/MIT
  * @link     null
  */
-class Controller
+abstract class Controller
 {
     /**
      * Render a view
      *
-     * @param static $viewPath  the view path
+     * @param string $viewPath  the view path
      * @param array  $dataArray The data array
      *
      * @return void
