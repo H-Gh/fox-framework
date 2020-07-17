@@ -1,5 +1,5 @@
 {
-    "name": "hgh/fox",
+    "name": "hgh/fox-framework",
     "description": "The mini framework",
     "type": "library",
     "require": {
