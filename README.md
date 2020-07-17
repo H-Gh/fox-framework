@@ -5,11 +5,18 @@
 This is a mini framework to run some basic web apps.  
   
 # Table of contents  
+ - [Installation](#installation)
  - [Folder structure of the framework](#folder-structure-of-the-framework)  
  - [Controllers](#controllers)  
  - [Models](#models)  
  - [Console](#console)  
  - [Environment variables](#environment-variables)  
+  
+# Installation
+require the package by following composer command:
+```composer
+composer require hgh/fox-framework
+```
   
 # Folder structure of the framework  
 The folder structure of the app is:  
@@ -49,11 +56,11 @@ The commands to run some actions in the CLI. All the consoles must be extended f
 # Environment variables 
 
 |Variable|Description|Available values|
-|---|---|---|---|
+|---|---|---|
 |DATABASE|The engine of database|`mysql`|
 |MYSQL_HOST|The host of MySQL|anything|
 |MYSQL_USERNAME|The username of MySQL|anything|
 |MYSQL_PASSWORD|The password of MySQL|anything|
 |MYSQL_PORT|The port of MySQL|anything|
 |MYSQL_DATABASE|The database name|anything|
-|APP_DEBUG|The debug mode of application. When it is on you can see the errors and their trace|`true` or `false`
+|APP_DEBUG|Debug mode of application. When it is on you can see the errors and their trace|`true` or `false`|
