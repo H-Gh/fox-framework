@@ -25,12 +25,24 @@ class Model
     private $connection;
 
     /**
+     * The result of find
+     *
      * @var array
      */
     private $findResult = [];
 
+    /**
+     * The table name of model
+     *
+     * @var string
+     */
     protected $table;
 
+    /**
+     * The primary key
+     *
+     * @var string
+     */
     protected $primaryColumn;
 
     /**
@@ -45,7 +57,9 @@ class Model
     }
 
     /**
-     * @param $columnName
+     * Get the columns value
+     *
+     * @param string $columnName
      *
      * @return mixed
      */
@@ -54,13 +68,14 @@ class Model
         if (isset($this->findResult[$columnName])) {
             return $this->findResult[$columnName];
         }
-
         return null;
     }
 
     /**
-     * @param mixed  $select
-     * @param string $query
+     * Find results from database by columns
+     *
+     * @param string $select The column names separated by comma
+     * @param string $query  The query to run
      *
      * @return Model
      */
@@ -71,8 +86,10 @@ class Model
     }
 
     /**
-     * @param mixed $select
-     * @param       $value
+     * Find one result from database by columns
+     *
+     * @param string $select The column names separated by comma
+     * @param        $value
      *
      * @return Model
      */
@@ -89,6 +106,8 @@ class Model
     }
 
     /**
+     * Get all results
+     *
      * @return array
      */
     public function all()
