@@ -3,6 +3,7 @@
 namespace Fox\Console;
 
 use Fox\Collection\Collection;
+use Fox\Collection\CollectionInterface;
 use Fox\Exception\NotFoundException;
 use Fox\Helpers\Url;
 
@@ -25,7 +26,7 @@ class CommandListerSingleton
     /**
      * The list of commands
      *
-     * @var Collection
+     * @var CollectionInterface
      */
     private $commands;
 
@@ -104,7 +105,7 @@ class CommandListerSingleton
     /**
      * Return all commands collection
      *
-     * @return Collection|CommandInterface[]
+     * @return CollectionInterface|CommandInterface[]
      */
     public function getCommands()
     {
