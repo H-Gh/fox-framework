@@ -42,4 +42,18 @@ interface CollectionInterface
      * @return CollectionInterface
      */
     public function update(int $index, $data): CollectionInterface;
+
+    /**
+     * Check what if the collection has member or not
+     *
+     * @return bool
+     */
+    public function isEmpty(): bool;
+
+    /**
+     * Return count of members
+     *
+     * @return int
+     */
+    public function count(): int;
 }

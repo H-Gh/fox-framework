@@ -71,6 +71,26 @@ class Collection implements Iterator, CollectionInterface
     }
 
     /**
+     * Check what if the collection has member or not
+     *
+     * @return bool
+     */
+    public function isEmpty(): bool
+    {
+        return empty($this->collection);
+    }
+
+    /**
+     * Return count of memebers
+     *
+     * @return bool
+     */
+    public function count(): int
+    {
+        return count($this->collection);
+    }
+
+    /**
      * Get the current element of array
      *
      * @return mixed
