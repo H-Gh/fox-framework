@@ -52,7 +52,7 @@ class SignatureParser
      */
     private function setAction()
     {
-        preg_match_all("/^([^{]+)\s{/", $this->signature, $matches);
+        preg_match_all("/^([^{]+)(\s{)?/", $this->signature, $matches);
         $this->action = isset($matches[1][0]) ? $matches[1][0] : null;
     }
 
@@ -88,9 +88,9 @@ class SignatureParser
     /**
      * Get the action
      *
-     * @return string
+     * @return string|null
      */
-    public function getAction(): string
+    public function getAction(): ?string
     {
         return $this->action;
     }
