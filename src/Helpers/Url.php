@@ -46,11 +46,7 @@ class Url
     public static function to(string $url)
     {
         $baseFolder = pathinfo(realpath(self::basePath()));
-        return sprintf(
-            "%s://%s%s",
-            isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https' : 'http',
-            $_SERVER['SERVER_NAME'],
-            "/" . $baseFolder["basename"] . "/" . $url
-        );
+        return sprintf("%s://%s%s", isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https' : 'http',
+            $_SERVER['SERVER_NAME'], "/" . $baseFolder["basename"] . "/" . $url);
     }
 }
