@@ -22,7 +22,7 @@ class ConnectorFactory
     public static function create($databaseName = null)
     {
         $namespace = "Fox\Database\\" . ucfirst(strtolower($databaseName)) . "Connector";
-        if(class_exists($namespace)) {
+        if (class_exists($namespace)) {
             return new $namespace();
         }
         throw new NotFoundException("The connector was not found.");

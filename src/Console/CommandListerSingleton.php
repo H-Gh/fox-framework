@@ -51,7 +51,8 @@ class CommandListerSingleton
             $classNamespace = $this->getNamespace($path);
             if ($this->hasSignature($classNamespace)) {
                 $signatureParser = new SignatureParser($classNamespace::SIGNATURE);
-                $command = new Command($signatureParser->getAction(), $signatureParser->getArguments(), $classNamespace);
+                $command = new Command($signatureParser->getAction(), $signatureParser->getArguments(),
+                    $classNamespace);
                 $this->commands->add($command, $signatureParser->getAction());
             }
         }
@@ -135,7 +136,7 @@ class CommandListerSingleton
     public function findOrFail(string $action)
     {
         $command = $this->find($action);
-        if(empty($command)) {
+        if (empty($command)) {
             throw new NotFoundException("Command not found.");
         }
         return $command;
