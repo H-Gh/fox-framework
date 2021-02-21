@@ -1,23 +1,26 @@
 {
-    "name": "hgh/fox-framework",
-    "description": "The mini framework",
-    "type": "library",
-    "require": {
-        "hgh/helpers": "^1.0",
-        "hgh/exception-handler": "^1.0",
-        "vlucas/phpdotenv": "^4.1"
-    },
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Hamed Ghasempour",
-            "email": "hamedghasempour@gmail.com"
-        }
-    ],
-    "minimum-stability": "stable",
-    "autoload":{
-        "psr-4": {
-            "Fox\\": "src/"
-        }
+  "name": "hgh/fox-framework",
+  "description": "The mini framework",
+  "type": "library",
+  "require": {
+    "hgh/helpers": "^1.0",
+    "hgh/exception-handler": "^1.0",
+    "vlucas/phpdotenv": "^4.1"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Hamed Ghasempour",
+      "email": "hamedghasempour@gmail.com"
     }
+  ],
+  "minimum-stability": "stable",
+  "autoload": {
+    "psr-4": {
+      "Fox\\": "src/"
+    },
+    "files": [
+      "../fox-framework/src/Utilities/helpersFunctions.php"
+    ]
+  }
 }
