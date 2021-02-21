@@ -98,10 +98,8 @@ class Model
         if (is_string($value)) {
             $value = "\"$value\"";
         }
-        $this->findResult = $this->connection->findOne($select, $this->table, "WHERE " .
-            $this->primaryColumn .
-            "=" .
-            $value);
+        $this->findResult = $this->connection->findOne($select, $this->table,
+            "WHERE " . $this->primaryColumn . "=" . $value);
         return $this;
     }
 
