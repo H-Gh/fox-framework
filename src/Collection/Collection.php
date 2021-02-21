@@ -159,7 +159,7 @@ class Collection implements Iterator, CollectionInterface
                     $keyCollection = new self();
                 }
                 $keyCollection->add($item);
-                $items->put($itemArray[$key], $keyCollection);
+                $items->add($keyCollection, $itemArray[$key]);
             }
         }
         return $items;
