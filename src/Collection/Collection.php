@@ -142,4 +142,92 @@ class Collection implements Iterator, CollectionInterface
     {
         reset($this->collection);
     }
+
+    /**
+     * @param string $key
+     *
+     * @return CollectionInterface
+     */
+    public function groupBy(string $key): CollectionInterface
+    {
+        $items = new self();
+        foreach ($this->collection as $index => $item) {
+            $itemArray = $this->getAsArray($item);
+            if (isset($itemArray[$key])) {
+                $keyCollection = $items->get($itemArray[$key]);
+                if (!$keyCollection instanceof self) {
+                    $keyCollection = new self();
+                }
+                $keyCollection->add($item);
+                $items->put($itemArray[$key], $keyCollection);
+            }
+        }
+        return $items;
+    }
+
+    /**
+     * @return array
+     */
+    public function toArray(): array
+    {
+        return $this->collection;
+    }
+
+    /**
+     * @param mixed $item
+     *
+     * @return array
+     */
+    private function getAsArray($item): array
+    {
+        if (is_array($item)) {
+            return $item;
+        }
+        if ($item instanceof Collection) {
+            return $item->toArray();
+        }
+        if (method_exists($item, "toArray")) {
+            return $item->toArray();
+        }
+        return [];
+    }
+
+    /**
+     * @param CollectionInterface|array $collection
+     *
+     * @return $this
+     */
+    public function merge(CollectionInterface|array $collection): CollectionInterface
+    {
+        $newArray = $collection instanceof self ? $collection->toArray() : $collection;
+        $this->collection = array_merge($this->collection, $newArray);
+        return $this;
+    }
+
+    /**
+     * @param string $key
+     *
+     * @return Collection
+     */
+    public function pluck(string $key): CollectionInterface
+    {
+        $items = new self();
+        foreach ($this->collection as $index => $item) {
+            $itemArray = $this->getAsArray($item);
+            if (isset($itemArray[$key])) {
+                $items->add($itemArray[$key]);
+            }
+        }
+        return $items;
+    }
+
+    /**
+     * @param string $key
+     *
+     * @return float|int
+     */
+    public function sum(string $key): float|int
+    {
+        return array_sum($this->pluck($key)->toArray());
+    }
 }

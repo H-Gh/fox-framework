@@ -56,4 +56,39 @@ interface CollectionInterface
      * @return int
      */
     public function count(): int;
+
+    /**
+     * @param string $key
+     *
+     * @return CollectionInterface
+     */
+    public function groupBy(string $key): CollectionInterface;
+
+    /**
+     * @return array
+     */
+    public function toArray(): array;
+
+    /**
+     * @param CollectionInterface|array $collection
+     *
+     * @return $this
+     */
+    public function merge(CollectionInterface|array $collection): CollectionInterface;
+
+
+    /**
+     * @param string $key
+     *
+     * @return Collection
+     */
+    public function pluck(string $key): CollectionInterface;
+
+
+    /**
+     * @param string $key
+     *
+     * @return float|int
+     */
+    public function sum(string $key);
 }
