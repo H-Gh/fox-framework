@@ -33,7 +33,7 @@ class Collection implements Iterator, CollectionInterface
      */
     public function add($data, $index = null): CollectionInterface
     {
-        if (!empty($index)) {
+        if (!is_null($index)) {
             $this->collection[$index] = $data;
         } else {
             $this->collection[] = $data;
