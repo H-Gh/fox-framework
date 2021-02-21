@@ -35,9 +35,9 @@ class ConfigManagerSingleton
     /**
      * @param string $key
      *
-     * @return array|null
+     * @return mixed
      */
-    public function get(string $key): ?array
+    public function get(string $key)
     {
         $explodedKey = explode(".", $key);
         if (is_array($explodedKey) && !empty($explodedKey)) {
